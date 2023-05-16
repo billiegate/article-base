@@ -1,12 +1,10 @@
 <template>
-    <div class="container">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">{{ title }}</div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">{{ title }}</div>
 
-                <div class="card-body">
-                    <div>{{ description }}</div>
-                </div>
+            <div class="card-body">
+                <div>{{ description }}</div>
             </div>
         </div>
     </div>

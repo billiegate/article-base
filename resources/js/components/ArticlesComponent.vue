@@ -3,8 +3,7 @@
         <div v-if="articles.length === 0">
             No article at the moment create one
         </div>
-        <div v-for="(article, i) in articles" :key="i" class="row justify-content-center">
-            {{ article }}
+        <div v-for="(article, i) in articles" :key="i" class="row">
             <article-component
                 :title="article.title" 
                 :description="article.description" 
