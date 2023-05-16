@@ -41,7 +41,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = $this->articleService->fetchAll(request());
-        return view('article', ['articles' => $articles]);
+        return view('article.index', ['articles' => $articles]);
     }
 
     /**
@@ -51,7 +51,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('article-create');
+        return view('article.create');
     }
 
     /**
@@ -63,8 +63,7 @@ class ArticleController extends Controller
     public function store(StoreArticleRequest $request)
     {
         $article = $this->articleService->create($request);
-        // $articles = $this->articleService->fetchUserArticles();
-        return view('article-create', ['article' => $article])->with("status", $article["message"]);
+        return view('article.create', ['article' => $article])->with("status", $article["message"]);
     }
 
     /**
@@ -75,7 +74,8 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return $this->articleService->singleArticle($article);
+        $article = $this->articleService->singleArticle($article);
+        return view('article.view', ['article' => $article]);
     }
 
     /**

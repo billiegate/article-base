@@ -62,8 +62,9 @@ class ArticleService
 
     public function singleArticle($article)
     {
-        $article = $article->withCount (['likes', 'views'])
-                    ->with(['comments', 'tags']);
+        $article = $article->load(['comments', 'tags', 'likes', 'views'])
+                    // ->withCount(['likes', 'views'])
+                    ;
         return $this->successResponse($article);
     }
 

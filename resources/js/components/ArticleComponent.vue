@@ -1,10 +1,11 @@
 <template>
     <div class="col-md-4">
         <div class="card">
-            <div class="card-header">{{ title }}</div>
-
+            <img :src="thumbnail" class="card-img-top" alt="..."/>
             <div class="card-body">
-                <div>{{ description }}</div>
+                <h5 class="card-title">{{ title }}</h5>
+                <p class="card-text">{{ description }}</p>
+                <a :href="`/articles/${id}`" class="btn btn-primary">view</a>
             </div>
         </div>
     </div>
@@ -13,7 +14,7 @@
 <script>
     export default {
         name: "Article",
-        props: ['thumbnail', 'title', 'description', 'comments', 'tags', 'likeCount', 'viewCount'],
+        props: ['thumbnail', 'title', 'description', 'comments', 'tags', 'likeCount', 'viewCount', 'id'],
         mounted() {
             console.log('Component mounted.')
         },
@@ -25,7 +26,8 @@
                 comments:   this.comments,
                 tags:       this.tags,
                 likeCount:  this.likeCount,
-                viewCount:  this.viewCount
+                viewCount:  this.viewCount,
+                id: this.id
             }
         }
     }

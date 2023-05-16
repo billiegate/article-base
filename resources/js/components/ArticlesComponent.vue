@@ -3,8 +3,9 @@
         <div v-if="articles.length === 0">
             No article at the moment create one
         </div>
-        <div v-for="(article, i) in articles" :key="i" class="row">
+        <div class="row">
             <article-component
+                v-for="(article, i) in articles" :key="i"
                 :title="article.title" 
                 :description="article.description" 
                 :thumbnail="article.thumbnail" 
@@ -12,6 +13,7 @@
                 :tags="article.tags" 
                 :likeCount="article.likeCount" 
                 :viewCount="article.viewCount" 
+                :id="article.id"
             />
         </div>
     </div>
