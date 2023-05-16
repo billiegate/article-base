@@ -3,9 +3,9 @@
         <div v-if="articles.length === 0">
             No article at the moment create one
         </div>
-        <div v-for="(article, i) in articles" :key="i" >
+        <div v-for="(article, i) in articles" :key="i" class="row justify-content-center">
             {{ article }}
-            <article 
+            <article-component
                 :title="article.title" 
                 :description="article.description" 
                 :thumbnail="article.thumbnail" 
@@ -13,7 +13,7 @@
                 :tags="article.tags" 
                 :likeCount="article.likeCount" 
                 :viewCount="article.viewCount" 
-            ></article>
+            />
         </div>
     </div>
 </template>
@@ -24,7 +24,9 @@
     export default {
         name: "Articles",
         props: ['data'],
-        components: [ArticleComponent],
+        components: {
+            'article-component': ArticleComponent
+        },
         mounted() {
             const {status = 200, data: responseData = [], message = ""} = JSON.parse(this.data)
             const {data = [], current_page, first_page_url, last_page, per_page} = responseData
