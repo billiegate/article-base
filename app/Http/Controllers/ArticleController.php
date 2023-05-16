@@ -16,6 +16,23 @@ class ArticleController extends Controller
     public function __construct(ArticleService $articleService){
         $this->articleService = $articleService;
     }
+
+    /**
+     * @OA\Get(
+     *      path="/articles",
+     *      operationId="getArticles",
+     *      tags={"Clients"},
+     *      summary="Get list of articles",
+     *      description="Returns list of articles",
+     *      @OA\Response(
+     *          response=200,
+     *          description="successful operation"
+     *       )
+     *     )
+     *
+     * Returns list of articles
+     */
+
     /**
      * Display a listing of the resource.
      *
