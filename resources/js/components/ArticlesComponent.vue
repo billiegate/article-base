@@ -1,23 +1,33 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
-            </div>
+        {{ articles }}
+        <div v-for="(article, i) in articles" :key="i" >
+            <article-component 
+                title="{{ article.title }}" 
+                description="{{ article.description }}" 
+                thumbnail="{{ article.thumbnail }}" 
+                comments="{{ article.comments }}" 
+                tags="{{ article.tags }}" 
+                likeCount="{{ article.likeCount }}" 
+                viewCount="{{ article.viewCount }}" 
+            />
         </div>
     </div>
 </template>
 
 <script>
     export default {
+        name: "Articles",
+        props: ['data'],
         mounted() {
-            console.log('Component mounted.')
+            const {status = 200, data: responseData = [], message = ""} = JSON.parse(this.data)
+            const {data = [], current_page, first_page_url, last_page, per_page} = responseData
+            this.articles = data
+        },
+        data() {
+            return {
+                articles: []
+            }
         }
     }
 </script>

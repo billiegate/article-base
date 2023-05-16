@@ -40,8 +40,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $article = $this->articleService->fetchAll(request());
-        return view('article', compact('article'));
+        $articles = $this->articleService->fetchAll(request());
+        return view('article', ['articles' => $articles]);
     }
 
     /**
@@ -51,7 +51,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('article-create');
     }
 
     /**
