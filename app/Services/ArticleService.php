@@ -19,6 +19,8 @@ class ArticleService
 
         //get all the articles orderby created date
         $articles = Article::orderBy('created_at', 'DESC')
+            ->withCount (['likes', 'views'])
+            ->with(['comments', 'tags'])
             ->when($request->search, function ($query) use ($request) {
                 $query->where('title', 'LIKE', '%' . $request->search . '%')
                     ->orWhere('description', 'LIKE', '%' . $request->search . '%');
@@ -60,6 +62,8 @@ class ArticleService
 
     public function singleArticle($article)
     {
+        $article = $article->withCount (['likes', 'views'])
+                    ->with(['comments', 'tags']);
         return $this->successResponse($article);
     }
 
