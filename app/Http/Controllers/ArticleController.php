@@ -62,7 +62,9 @@ class ArticleController extends Controller
      */
     public function store(StoreArticleRequest $request)
     {
-        return $this->articleService->create($request);
+        $article = $this->articleService->create($request);
+        // $articles = $this->articleService->fetchUserArticles();
+        return view('article-create', ['article' => $article])->with("status", $article["message"]);
     }
 
     /**

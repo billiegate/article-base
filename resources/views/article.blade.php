@@ -10,9 +10,10 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     {{ __('Articles') }}
-                    <button type="submit" class="btn btn-primary">
+                    
+                    <a href="{{ route('articles.create') }}" class="btn btn-primary">
                         {{ __('Add New') }}
-                    </button>
+                    </a>
                 </div>
 
                 <div class="card-body">

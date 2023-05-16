@@ -1,17 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-<?php
-    $articles = json_encode($articles);
-?>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Create Article') }}</div>
+                <div class="card-header d-flex justify-content-between">
+                    {{ __('Create Article') }}
+                    <a href="{{ route('articles.index') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">
+                        Back
+                    </a>
+                </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    <form method="POST" action="{{ route('articles.store') }}">
                         @csrf
 
                         <div class="row mb-3">
